@@ -1,6 +1,5 @@
 #include "penglai-enclave.h"
 #include <stdlib.h>
-#include <stdlib.h>
 #include <pthread.h>
 
 struct args
@@ -9,15 +8,16 @@ struct args
   int i;
 };
 
+#if 1
 void* create_enclave(void* args0)
 {
   struct args *args = (struct args*)args0;
   void* in = args->in;
   int i = args->i;
   int ret = 0;
-  
-  struct PLenclave* enclave = malloc(sizeof(struct PLenclave)); 
-  struct enclave_args* params = malloc(sizeof(struct enclave_args)); 
+
+  struct PLenclave* enclave = malloc(sizeof(struct PLenclave));
+  struct enclave_args* params = malloc(sizeof(struct enclave_args));
   PLenclave_init(enclave);
   enclave_param_init(params);
 
@@ -40,6 +40,7 @@ void* create_enclave(void* args0)
   free(enclave);
   free(params);
 }
+#endif
 
 int main(int argc, char** argv)
 {
@@ -49,6 +50,7 @@ int main(int argc, char** argv)
   }
 
   int thread_num = 1;
+#if 1
   if(argc == 3)
   {
     thread_num = atoi(argv[2]);
@@ -58,14 +60,16 @@ int main(int argc, char** argv)
       return -1;
     }
   }
+#endif
 
   pthread_t* threads = (pthread_t*)malloc(thread_num * sizeof(pthread_t));
+#if 1
   struct args* args = (struct args*)malloc(thread_num * sizeof(struct args));
 
   struct elf_args* enclaveFile = malloc(sizeof(struct elf_args));
   char * eappfile = argv[1];
   elf_args_init(enclaveFile, eappfile);
-  
+
   if(!elf_valid(enclaveFile))
   {
     printf("error when initializing enclaveFile\n");
@@ -77,18 +81,23 @@ int main(int argc, char** argv)
     args[i].in = (void*)enclaveFile;
     args[i].i = i + 1;
     pthread_create(&threads[i], NULL, create_enclave, (void*)&(args[i]));
+    //create_enclave((void*)&(args[i]));
   }
 
+
+#if 1
   for(int i =0; i< thread_num; ++i)
   {
     pthread_join(threads[i], (void**)0);
   }
+#endif
 
 out:
   elf_args_destroy(enclaveFile);
   free(enclaveFile);
   free(threads);
   free(args);
+#endif
 
   return 0;
 }

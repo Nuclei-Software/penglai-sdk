@@ -1,3 +1,7 @@
+PENGLAI_SDK:=${PWD}
+RISCV := ../work/buildroot_initramfs/host
+PATH := $(RISCV)/bin:$(PATH)
+
 all:
 	make -C musl
 	make -C lib

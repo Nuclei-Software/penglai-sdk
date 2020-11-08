@@ -19,6 +19,7 @@ int prime(unsigned long * args)
 }
 
 int EAPP_ENTRY main(){
+  //EAPP_RETURN(0xd);
   unsigned long * args;
   EAPP_RESERVE_REG;
   prime(args);

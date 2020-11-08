@@ -1,7 +1,7 @@
-CC = riscv64-unknown-linux-gnu-gcc
+CC = riscv-nuclei-linux-gnu-gcc
 CFLAGS = -Wall
-LINK = riscv64-unknown-linux-gnu-ld
-AS = riscv64-unknown-linux-gnu-as
+LINK = riscv-nuclei-linux-gnu-ld
+AS = riscv-nuclei-linux-gnu-as
 
 SDK_LIB_DIR = $(PENGLAI_SDK)/lib
 MUSL_LIB_DIR = $(PENGLAI_SDK)/musl/lib
@@ -23,6 +23,10 @@ APP_BIN = $(patsubst %,%,$(APP))
 all: $(APP_BIN)
 
 $(APP_C_OBJS): %.o: %.c
+	echo $(PENGLAI_SDK)
+	$(CC) $(CFLAGS) -c $<
+
+$(APP_A_OBJS): %.o: %.s
 	echo $(PENGLAI_SDK)
 	$(CC) $(CFLAGS) -c $<
 

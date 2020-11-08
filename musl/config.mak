@@ -13,7 +13,7 @@ bindir = $(exec_prefix)/bin
 libdir = $(prefix)/lib
 includedir = $(prefix)/include
 syslibdir = /lib
-CC = riscv64-unknown-linux-gnu-gcc
+CC = riscv-nuclei-linux-gnu-gcc
 CFLAGS = 
 CFLAGS_AUTO = -Os -pipe -fomit-frame-pointer -fno-unwind-tables -fno-asynchronous-unwind-tables -ffunction-sections -fdata-sections -Werror=implicit-function-declaration -Werror=implicit-int -Werror=pointer-sign -Werror=pointer-arith
 CFLAGS_C99FSE = -std=c99 -nostdinc -ffreestanding -fexcess-precision=standard -frounding-math -Wa,--noexecstack
@@ -22,7 +22,7 @@ CFLAGS_NOSSP = -fno-stack-protector
 CPPFLAGS = 
 LDFLAGS = 
 LDFLAGS_AUTO = -Wl,--sort-section,alignment -Wl,--sort-common -Wl,--gc-sections -Wl,--hash-style=both -Wl,--no-undefined -Wl,--exclude-libs=ALL -Wl,--dynamic-list=./dynamic.list
-CROSS_COMPILE = riscv64-unknown-linux-gnu-
+CROSS_COMPILE = riscv-nuclei-linux-gnu-
 LIBCC = -lgcc -lgcc_eh
 OPTIMIZE_GLOBS = internal/*.c malloc/*.c string/*.c
 ALL_TOOLS =  obj/musl-gcc

@@ -8,7 +8,7 @@ void PLenclave_init(struct PLenclave *PLenclave)
   if(PLenclave->fd < 0)
   {
     fprintf(stderr,"LIB: cannot open enclave dev\n");
-  }  
+  }
 }
 
 void PLenclave_finalize(struct PLenclave *PLenclave)
@@ -59,9 +59,12 @@ int PLenclave_run(struct PLenclave *PLenclave)
   {
     fprintf(stderr, "LIB: ioctl run enclave is failed \n");
     return -1;
+  }else{
+    fprintf(stderr, "LIB: ioctl run enclave return success\n");
+    return -1;
   }
 
-  return 0; 
+  return 0;
 }
 
 int PLenclave_stop(struct PLenclave *PLenclave)
@@ -73,7 +76,7 @@ int PLenclave_stop(struct PLenclave *PLenclave)
     fprintf(stderr, "LIB: ioctl stop enclave is failed \n");
     return -1;
   }
-  return 0;  
+  return 0;
 }
 
 int PLenclave_resume(struct PLenclave *PLenclave)
@@ -85,7 +88,7 @@ int PLenclave_resume(struct PLenclave *PLenclave)
     fprintf(stderr, "LIB: ioctl stop enclave is failed \n");
     return -1;
   }
-  return 0; 
+  return 0;
 }
 
 int PLenclave_destroy(struct PLenclave *PLenclave)
@@ -111,6 +114,6 @@ int PLenclave_debug_print(struct PLenclave *PLenclave)
     return -1;
   }
 
-  return 0; 
+  return 0;
 }
 

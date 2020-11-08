@@ -7,7 +7,7 @@
 #include <sys/mman.h>
 #include <linux/types.h>
 #include <linux/ioctl.h>
-#include <pthread.h>
+//#include <pthread.h>
 #include <string.h>
 
 #define PENGLAI_ENCLAVE_IOC_MAGIC  0xa4

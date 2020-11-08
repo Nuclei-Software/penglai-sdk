@@ -1,10 +1,10 @@
-CC = riscv64-unknown-linux-gnu-gcc
+CC = riscv-nuclei-linux-gnu-gcc
 INCLUDE_DIR = include/
 SRC_DIR = src
 CCFLAGS = -Wall -Werror -I $(INCLUDE_DIR)
 SRCS = param.c penglai-enclave.c elf.c
 OBJS = $(patsubst %.c,%.o,$(SRCS))
-AR = riscv64-unknown-elf-ar
+AR = riscv-nuclei-linux-gnu-ar
 ARFLAGS = rcs
 
 TARGET=../libpenglai-enclave-host.a
@@ -18,4 +18,4 @@ $(OBJS): %.o: $(addprefix $(SRC_DIR)/, %.c)
 	$(CC) $(CCFLAGS) -c $<
 
 clean:
-	rm -f $(OBJS) $(TARGET) 
+	rm -f $(OBJS) $(TARGET)
