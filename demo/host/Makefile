@@ -1,5 +1,6 @@
-CC=riscv-nuclei-linux-gnu-gcc
-STRIP=riscv-nuclei-linux-gnu-strip
+CROSS_COMPILE ?= riscv-nuclei-linux-gnu-
+CC    ?= $(CROSS_COMPILE)gcc
+STRIP ?= $(CROSS_COMPILE)strip
 
 HOST=host
 

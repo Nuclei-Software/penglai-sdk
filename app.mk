@@ -1,7 +1,9 @@
-CC = riscv-nuclei-linux-gnu-gcc
+CROSS_COMPILE ?= riscv-nuclei-linux-gnu-
+CC ?= $(CROSS_COMPILE)gcc
+LINK ?= $(CROSS_COMPILE)ld
+AS ?= $(CROSS_COMPILE)as
+
 CFLAGS = -Wall
-LINK = riscv-nuclei-linux-gnu-ld
-AS = riscv-nuclei-linux-gnu-as
 
 SDK_LIB_DIR = $(PENGLAI_SDK)/lib
 MUSL_LIB_DIR = $(PENGLAI_SDK)/musl/lib

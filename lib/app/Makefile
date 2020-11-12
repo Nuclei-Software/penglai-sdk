@@ -1,9 +1,11 @@
-CC = riscv-nuclei-linux-gnu-gcc
-CFLAGS = -Wall
-LINK = riscv-nuclei-linux-gnu-ld
+CROSS_COMPILE ?= riscv-nuclei-linux-gnu-
+CC ?= $(CROSS_COMPILE)gcc
+LINK ?= $(CROSS_COMPILE)ld
+AR ?= $(CROSS_COMPILE)ar
+
 LINKFLAGS = -static
 INCLUDE_DIR = include
-AR = riscv-nuclei-linux-gnu-ar
+CFLAGS = -Wall
 ARFLAGS = rcs
 
 ASM_SRCS = src/eret.S
